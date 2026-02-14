@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para mi persona favorita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            romantic: ["Dancing Script", "cursive"],
+            elegant: ["Playfair Display", "serif"],
+          },
+          keyframes: {
+            pulseSoft: {
+              "0%, 100%": { transform: "scale(1)" },
+              "50%": { transform: "scale(1.08)" },
+            },
+            fadeOut: {
+              "0%": { opacity: "1" },
+              "100%": { opacity: "0" },
+            },
+            fadeInUp: {
+              "0%": { opacity: "0", transform: "translateY(8px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+          },
+          animation: {
+            pulseSoft: "pulseSoft 2s ease-in-out infinite",
+            fadeOut: "fadeOut 0.8s ease forwards",
+            fadeInUp: "fadeInUp 0.7s ease forwards",
+          },
+          colors: {
+            cream: "#FFFDD0",
+            rose: "#F4B6C2",
+            midnight: "#2C2A4A",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-cream min-h-screen text-midnight">
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <section class="w-full max-w-xl">
+      <div id="intro" class="relative flex flex-col items-center justify-center gap-6 py-8">
+        <div id="sky" class="absolute inset-0 pointer-events-none">
+          <div class="star star-1"></div>
+          <div class="star star-2"></div>
+          <div class="star star-3"></div>
+          <div class="star star-4"></div>
+          <div class="star star-5"></div>
+        </div>
+
+        <button id="moon" aria-label="Luna" class="relative z-10 cursor-pointer rounded-full shadow-2xl transform-gpu">
+          <!-- Detailed moon SVG with subtle craters and glow -->
+          <svg viewBox="0 0 200 200" class="w-40 h-40 sm:w-48 sm:h-48" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+              <radialGradient id="gMoon" cx="35%" cy="30%">
+                <stop offset="0%" stop-color="#FFF9EC"/>
+                <stop offset="60%" stop-color="#FFF0D1"/>
+                <stop offset="100%" stop-color="#F4E1C9"/>
+              </radialGradient>
+              <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <circle cx="100" cy="100" r="80" fill="url(#gMoon)" filter="url(#softGlow)" />
+            <path d="M150 60 A70 70 0 1 0 130 160 A58 58 0 1 1 150 60 Z" fill="#F0D9C1" opacity="0.55" />
+            <g fill="#E9D6C6" opacity="0.9">
+              <circle cx="70" cy="75" r="9"/>
+              <circle cx="120" cy="95" r="6"/>
+              <circle cx="85" cy="125" r="7"/>
+              <circle cx="140" cy="68" r="5"/>
+            </g>
+            <g opacity="0.06" fill="#000">
+              <circle cx="60" cy="50" r="1.8"/>
+              <circle cx="80" cy="60" r="1.2"/>
+              <circle cx="100" cy="40" r="1.4"/>
+              <circle cx="130" cy="110" r="1.6"/>
+              <circle cx="110" cy="140" r="1.2"/>
+            </g>
+          </svg>
+        </button>
+
+        <p class="font-elegant text-lg sm:text-xl text-center text-midnight/70 z-10">
+          Toca la luna para revelar el mensaje
+        </p>
+
+        <div class="floaters pointer-events-none">
+          <div class="floater heart"></div>
+          <div class="floater petal"></div>
+        </div>
+      </div>
+
+      <div id="content" class="hidden">
+        <div class="bg-white/85 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+          <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-rose/30 blur-xl"></div>
+          <div class="absolute -bottom-12 -right-12 w-56 h-56 rounded-full bg-[#A0C4FF]/25 blur-2xl"></div>
+          <h1 class="font-romantic text-4xl sm:text-5xl text-center mb-6">
+            Para mi persona favorita
+          </h1>
+
+          <p class="mt-6 font-elegant text-base sm:text-lg text-midnight/90">
+            Desde que empezamos a hablar, algo se siente diferente. No es solo la emoción de conocerte, es la tranquilidad que me da conversar contigo, la forma tan natural en la que todo fluye. Me gusta que no haya prisas, que podamos descubrirnos poco a poco, sin máscaras y sin presiones.
+          </p>
+          <p class="mt-4 font-elegant text-base sm:text-lg text-midnight/90">
+            No sé exactamente a dónde nos llevará esto, pero sí sé que disfruto cada mensaje, cada risa compartida y cada momento en el que siento que conectamos un poco más. Me gusta conocerte, me gusta lo que estoy descubriendo de ti, y me gusta la idea de seguir viendo hasta dónde puede llegar esto.
+          </p>
+          <p class="mt-4 font-elegant text-base sm:text-lg text-midnight/90">
+            No prometo algo apresurado ni palabras vacías, pero sí puedo decir que mi interés es real. Prefiero construir algo con calma, con intención y con verdad. Y si esto sigue creciendo como hasta ahora… entonces valdrá completamente la pena haber coincidido contigo.
+          </p>
+
+          <p class="mt-8 text-center font-romantic text-2xl sm:text-3xl">
+            Con todo mi cariño, siempre.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const moon = document.getElementById("moon");
+    const intro = document.getElementById("intro");
+    const content = document.getElementById("content");
+    const reasons = document.querySelectorAll(".reason");
+    let confettiInterval = null;
+
+    function startConfettiLoop() {
+      if (typeof confetti !== 'function') return;
+      if (confettiInterval) return; // already running
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 }, colors: ["#F4B6C2", "#FFD1DC", "#B9FBC0", "#A0C4FF"] });
+      confettiInterval = setInterval(() => {
+        confetti({
+          particleCount: 30 + Math.floor(Math.random() * 30),
+          angle: 90 + (Math.random() * 40 - 20),
+          spread: 50 + Math.random() * 50,
+          origin: { x: Math.random(), y: 0.6 + Math.random() * 0.2 },
+          colors: ["#F4B6C2", "#FFD1DC", "#B9FBC0", "#A0C4FF"],
+          gravity: 0.6 + Math.random() * 0.6,
+        });
+      }, 850);
+    }
+
+    function revealContent() {
+      intro.classList.add("animate-fadeOut");
+      setTimeout(() => {
+        intro.classList.add("hidden");
+        content.classList.remove("hidden");
+
+        reasons.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add("animate-fadeInUp");
+            item.classList.remove("opacity-0");
+          }, 220 * (index + 1));
+        });
+
+        startConfettiLoop();
+      }, 720);
+    }
+
+    moon.addEventListener('click', revealContent);
+
+    // position stars
+    document.querySelectorAll('.star').forEach((s, i) => {
+      const pos = [ [6,12], [20,18], [78,8], [55,26], [88,16] ][i] || [10,10];
+      s.style.left = pos[0] + '%';
+      s.style.top = pos[1] + '%';
+    });
+  </script>
+
+  <style>
+    .star { position: absolute; width: 4px; height: 4px; background: #FFF9F3; border-radius: 9999px; opacity: .95; filter: drop-shadow(0 0 6px rgba(255,255,255,.25)); animation: twinkle 3s infinite; }
+    .star-2 { width:6px; height:6px; opacity:.9; animation-duration:4s; }
+    .star-3 { width:3px; height:3px; opacity:.85; animation-duration:2.8s; }
+    .star-4 { width:5px; height:5px; opacity:.92; animation-duration:3.6s; }
+    .star-5 { width:3px; height:3px; opacity:.8; animation-duration:4.2s; }
+
+    @keyframes twinkle { 0% { transform: scale(.9); opacity:.6 } 50% { transform: scale(1.3); opacity:1 } 100% { transform: scale(.9); opacity:.6 } }
+
+    .floaters { position: absolute; inset:0; z-index:0; }
+    .floater { position: absolute; width:36px; height:36px; opacity:.85; transform: translateY(0); animation: drift 6s ease-in-out infinite; }
+    .floater.heart { left:10%; top:70%; background: radial-gradient(circle at 30% 30%, #FFD1DC, #F4B6C2); clip-path: path('M10 30 C10 10 40 10 40 30 C40 50 20 65 20 65 C20 65 0 50 0 30 C0 10 30 10 30 30 Z'); border-radius: 8px; filter: drop-shadow(0 6px 14px rgba(244,182,194,.25)); }
+    .floater.petal { right:12%; top:60%; background: linear-gradient(180deg,#FFD1DC,#F4B6C2); width:28px; height:14px; border-radius:14px; transform-origin:center; animation-duration:7s; }
+
+    @keyframes drift { 0% { transform: translateY(0) rotate(0deg) } 50% { transform: translateY(-18px) rotate(6deg) } 100% { transform: translateY(0) rotate(0deg) } }
+
+    @media (max-width:640px){ .floater { display:none } }
+  </style>
+</body>
+</html>
